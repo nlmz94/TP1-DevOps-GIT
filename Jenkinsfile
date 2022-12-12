@@ -33,7 +33,8 @@ pipeline {
     post {
         failure {
             emailext body: 'Ce build a échoué',
-            subject: 'build',
+            recipientProviders:[requestor()],
+            subject: 'buildddd',
             to: 'hyfrb@yopmail.com'
         }
     }
