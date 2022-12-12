@@ -1,3 +1,4 @@
+/* groovylint-disable CompileStatic */
 pipeline {
     agent any
 
@@ -19,7 +20,7 @@ pipeline {
         }
         stage('docker-build') {
             steps {
-                sh 'docker build -t naelmez/tp7:1.0 .'
+                bat 'docker build -t naelmez/tp7:1.0 .'
             }
         }
         stage('docker-push') {
