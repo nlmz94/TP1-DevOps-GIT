@@ -19,7 +19,7 @@ pipeline {
         }
         stage('docker-build') {
             steps {
-                bat 'docker build -t naelmez/tp7:1.0 .'
+                sh 'docker build -t naelmez/tp7:1.0 .'
             }
         }
         stage('docker-push') {
