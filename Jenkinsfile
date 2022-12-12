@@ -34,7 +34,7 @@ pipeline {
         failure {
             emailext body: 'Ce build a échoué',
             subject: 'build',
-            to: 'nmz94140@gmail.com'
+            to: 'hyfrb@yopmail.com'
         }
     }
 }
