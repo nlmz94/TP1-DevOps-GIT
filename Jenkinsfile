@@ -1,41 +1,26 @@
 /* groovylint-disable CompileStatic */
 pipeline {
     agent any
-
+    environment {
+        USERNAME = 'hugosinp'
+        FAVORITE_COLOR = 'blue'
+    }
     stages {
         stage('git checkout') {
             steps {
                 git url: 'https://github.com/nlmz94/TP1-DevOps-GIT', branch: 'main'
             }
         }
-        stage('build') {
+        stage('Lister les variables') {
             steps {
-                bat 'mvn clean install'
+                bat 'set'
             }
         }
-        stage('test') {
+        stage('Utilisation des variables') {
             steps {
-                bat 'mvn test'
+                echo env.USERNAME
+                echo env.FAVORITE_COLOR
             }
-        }
-        stage('docker-build') {
-            steps {
-                bat 'docker build -t naelmez/tp7:1.0 .'
-            }
-        }
-        stage('docker-push') {
-            steps {
-                bat 'docker login -u naelmez -p temporarypassword'
-                bat 'docker push naelmez/tp7:1.0'
-            }
-        }
-    }
-    post {
-        failure {
-            emailext body: 'Ce build a échoué',
-            recipientProviders:[requestor()],
-            subject: 'buildddd',
-            to: 'hyfrb@yopmail.com'
         }
     }
 }
