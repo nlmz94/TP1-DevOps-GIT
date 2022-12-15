@@ -17,9 +17,14 @@ pipeline {
             }
         }
         stage('Utilisation des variables') {
+            environment {
+                HOBBY = 'Snowboarding'
+                FAVORITE_COLOR = 'cyan'
+            }
             steps {
                 echo env.USERNAME
                 echo env.FAVORITE_COLOR
+                echo env.HOBBY
             }
         }
     }
